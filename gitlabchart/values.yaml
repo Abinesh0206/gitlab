@@ -13,7 +13,7 @@ gitlab:
 postgresql:
   enabled: false  # Disable built-in PostgreSQL
   external:
-    host: "postgresql.<your-namespace>.svc.cluster.local"
+    host: "postgresql.post-git.svc.cluster.local"
     port: 5432
     database: "postgres"
     username: "postgres"
