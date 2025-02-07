@@ -15,7 +15,7 @@ postgresql:
   external:
     host: "postgresql.<your-namespace>.svc.cluster.local"
     port: 5432
-    database: "gitlabhq_production"
+    database: "postgres"
     username: "postgres"
     passwordSecret: "postgresql-secret"
-    passwordKey: "postgres-password"
+    passwordKey: "postgres"
