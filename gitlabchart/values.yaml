@@ -1,0 +1,21 @@
+# GitLab Configuration
+gitlab:
+  image: gitlab/gitlab-ce:latest
+  replicas: 1
+  service:
+    type: ClusterIP
+    port: 80
+  ingress:
+    enabled: false  # Change to true if using Ingress
+    host: gitlab.local
+
+# PostgreSQL Configuration (use the existing instance)
+postgresql:
+  enabled: false  # Disable built-in PostgreSQL
+  external:
+    host: "postgresql.<your-namespace>.svc.cluster.local"
+    port: 5432
+    database: "gitlabhq_production"
+    username: "postgres"
+    passwordSecret: "postgresql-secret"
+    passwordKey: "postgres-password"

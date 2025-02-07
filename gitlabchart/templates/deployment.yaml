@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitlab-ce
+  labels:
+    app: gitlab
+spec:
+  replicas: {{ .Values.gitlab.replicas }}
+  selector:
+    matchLabels:
+      app: gitlab
+  template:
+    metadata:
+      labels:
+        app: gitlab
+    spec:
+      containers:
+        - name: gitlab
+          image: {{ .Values.gitlab.image }}
+          ports:
+            - containerPort: 80
+          env:
+            - name: GITLAB_OMNIBUS_CONFIG
+              value: |
+                external_url 'http://{{ .Values.gitlab.ingress.host }}'
+                gitlab_rails['db_adapter'] = 'postgresql'
+                gitlab_rails['db_host'] = '{{ .Values.postgresql.external.host }}'
+                gitlab_rails['db_port'] = {{ .Values.postgresql.external.port }}
+                gitlab_rails['db_database'] = '{{ .Values.postgresql.external.database }}'
+                gitlab_rails['db_username'] = '{{ .Values.postgresql.external.username }}'
+                gitlab_rails['db_password'] = File.read('/secrets/db-password')
+          volumeMounts:
+            - name: db-password
+              mountPath: /secrets
+              readOnly: true
+      volumes:
+        - name: db-password
+          secret:
+            secretName: {{ .Values.postgresql.external.passwordSecret }}
+            items:
+              - key: {{ .Values.postgresql.external.passwordKey }}
+                path: db-password

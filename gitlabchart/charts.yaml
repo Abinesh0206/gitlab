@@ -1,0 +1,6 @@
+apiVersion: v2
+name: gitlab-ce
+description: A Helm chart for GitLab CE
+type: application
+version: 1.0.0
+appVersion: "17.7.2"
