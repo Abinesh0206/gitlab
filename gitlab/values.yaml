@@ -24,8 +24,8 @@ env:
   GITLAB_OMNIBUS_CONFIG: |
     external_url 'http://gitlab.example.com'
     gitlab_rails['db_adapter'] = 'postgresql'
-    gitlab_rails['db_host'] = '<AWS_RDS_ENDPOINT>'
+    gitlab_rails['db_host'] = 'database-1.ca7um2agoffa.us-east-1.rds.amazonaws.com'
     gitlab_rails['db_port'] = 5432
-    gitlab_rails['db_username'] = '<DB_USERNAME>'
-    gitlab_rails['db_password'] = '<DB_PASSWORD>'
-    gitlab_rails['db_database'] = '<DB_NAME>'
+    gitlab_rails['db_username'] = 'gitlab'
+    gitlab_rails['db_password'] = 'gitlab1231'
+    gitlab_rails['db_database'] = 'database-1'
