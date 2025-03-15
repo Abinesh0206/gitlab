@@ -1,0 +1,31 @@
+image:
+  repository: gitlab/gitlab-ce
+  tag: "17.7.2"
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+  hosts:
+    - host: gitlab.example.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+env:
+  GITLAB_OMNIBUS_CONFIG: |
+    external_url 'http://gitlab.example.com'
+    gitlab_rails['db_adapter'] = 'postgresql'
+    gitlab_rails['db_host'] = '<AWS_RDS_ENDPOINT>'
+    gitlab_rails['db_port'] = 5432
+    gitlab_rails['db_username'] = '<DB_USERNAME>'
+    gitlab_rails['db_password'] = '<DB_PASSWORD>'
+    gitlab_rails['db_database'] = '<DB_NAME>'
