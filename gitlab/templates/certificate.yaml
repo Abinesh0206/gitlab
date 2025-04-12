@@ -4,7 +4,7 @@ metadata:
   name: gitlab-tls
   namespace: rds-git
 spec:
-  secretName: gitlab-tls
+  secretName: gitlab-tls-ls87s
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
