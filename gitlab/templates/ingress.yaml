@@ -20,6 +20,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: gitlab-service   # 🔁 Replace with your GitLab service name
+            name: gitlab   # 🔁 Replace with your GitLab service name
             port:
               number: 80
