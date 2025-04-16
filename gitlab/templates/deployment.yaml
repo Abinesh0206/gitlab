@@ -19,7 +19,9 @@ spec:
           env:
             - name: GITLAB_OMNIBUS_CONFIG
               value: |
-                external_url 'http://gitlab.example.com';
+                external_url 'http://gitlab.example.com
+                nginx['listen_port'] = 80
+                nginx['listen_address'] = '0.0.0.0'
                 gitlab_rails['db_host'] = '{{ .Values.postgresql.host }}';
                 gitlab_rails['db_port'] = {{ .Values.postgresql.port }};
                 gitlab_rails['db_database'] = '{{ .Values.postgresql.database }}';
