@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: gitlab
+  namespace: rds
   labels:
     app: gitlab
     release: gitlab
@@ -13,12 +14,12 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
     service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
 spec:
-  type: {{ .Values.service.type }}
-  ports:
-    - name: http
-      port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.targetPort }}
-      protocol: {{ .Values.service.protocol }}
+  type: LoadBalancer
   selector:
     app: gitlab
     release: gitlab
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
