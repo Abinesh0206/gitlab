@@ -7,7 +7,7 @@ metadata:
     app: gitlab
     release: gitlab
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-type: "external"
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
     #service.beta.kubernetes.io/aws-load-balancer-eip-allocations: "eipalloc-0a589a5ba3261c27a,eipalloc-08d609832118287e2"
 spec:
