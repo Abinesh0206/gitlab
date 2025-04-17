@@ -19,8 +19,8 @@ spec:
           env:
             - name: GITLAB_OMNIBUS_CONFIG
               value: |
-                external_url 'http://gitlab.example.com
-                gitlab_rails['db_host'] = 'dev-db.cyxw2mqqud77.us-east-1.rds.amazonaws.com'
+                external_url 'http://gitlab.example.com';
+                gitlab_rails['db_host'] = '{{ .Values.postgresql.host }}';
                 gitlab_rails['db_port'] = {{ .Values.postgresql.port }};
                 gitlab_rails['db_database'] = '{{ .Values.postgresql.database }}';
                 gitlab_rails['db_username'] = '{{ .Values.postgresql.username }}';
