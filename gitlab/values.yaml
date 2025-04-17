@@ -8,20 +8,17 @@ image:
 service:
   type: LoadBalancer
   port: 80
-  targetPort: 8080
-  protocol: TCP
 
 ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: "nginx"
   hosts:
-    - host: gitlab.internal.local   # Change to your internal DNS or use /etc/hosts
+    - host: gitlab.example.com
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls: []
-
 
 persistence:
   enabled: true
