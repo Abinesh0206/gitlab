@@ -19,4 +19,3 @@ spec:
       name: http
   selector:
     app: gitlab
-    release: gitlab
