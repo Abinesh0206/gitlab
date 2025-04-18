@@ -7,7 +7,7 @@ spec:
   tls:
     - hosts:
         - gitlab.cloudmasa.com
-      secretName: gitlab-secret
+      secretName: gitlab-tls-5qxpd
   rules:
     - host: gitlab.cloudmasa.com
       http:
