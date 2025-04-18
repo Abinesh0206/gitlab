@@ -30,11 +30,3 @@ spec:
                 name: gitlab
                 port:
                   number: 80
-          # This path is automatically handled by cert-manager for HTTP-01 challenges
-          - path: /.well-known/acme-challenge/
-            pathType: Prefix
-            backend:
-              service:
-                name: cm-acme-http-solver
-                port:
-                  number: 8089
