@@ -30,12 +30,17 @@ spec:
     initContainers:
   - name: init-permissions
     image: busybox:1.36
+    securityContext:
+      runAsUser: 998
+      runAsGroup: 998
+      runAsNonRoot: true
     command:
       - "sh"
       - "-c"
       - |
-        echo "Checking directories..."
-        ls -ld /var/opt/gitlab /etc/gitlab /etc/ssh || true
+        echo "Checking volume access..."
+        mkdir -p /var/opt/gitlab /etc/gitlab /etc/ssh
+        ls -ld /var/opt/gitlab /etc/gitlab /etc/ssh
     volumeMounts:
       - mountPath: /var/opt/gitlab
         name: gitlab-storage
@@ -43,9 +48,7 @@ spec:
         name: gitlab-config
       - mountPath: /etc/ssh
         name: ssh-volume
-  securityContext:
-    runAsUser: 0
-    runAsGroup: 0
+
 
       containers:
         - name: gitlab
