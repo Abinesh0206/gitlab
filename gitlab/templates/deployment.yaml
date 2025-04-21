@@ -43,11 +43,9 @@ spec:
         name: gitlab-config
       - mountPath: /etc/ssh
         name: ssh-volume
-    securityContext:
-      runAsUser: 998
-      runAsGroup: 998
-      runAsNonRoot: true
-
+  securityContext:
+    runAsUser: 0
+    runAsGroup: 0
 
       containers:
         - name: gitlab
