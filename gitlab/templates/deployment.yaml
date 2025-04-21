@@ -50,6 +50,7 @@ spec:
         name: ssh-volume
 
 
+
       containers:
         - name: gitlab
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
