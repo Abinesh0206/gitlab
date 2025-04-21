@@ -41,3 +41,8 @@ resources:
   limits:
     memory: "6Gi"
     cpu: "1"
+
+backups:
+  existingClaim: gitlab-backup-pvc
+
+    
