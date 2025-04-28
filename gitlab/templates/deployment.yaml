@@ -35,6 +35,8 @@ spec:
               name: gitlab-storage
             - mountPath: /var/opt/gitlab/backups
               name: gitlab-backup-volume
+          resources:                      # Correct placement here (aligned with volumeMounts, under container)
+            {{- toYaml .Values.resources | nindent 12 }}
       volumes:
         - name: gitlab-storage
           persistentVolumeClaim:
